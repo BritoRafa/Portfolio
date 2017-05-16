@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class TorreMetralhadora : Torre {
+	[Range(0,4)]
+	[SerializeField]private float Velocidade = 3.0f;
 	// Use this for initialization
 	void Start () {
 	
@@ -12,6 +14,7 @@ public class TorreMetralhadora : Torre {
 		alvo = EscolheAlvo();
 		if (alvo != null) 
 		{
+			Mira ();
 			Atira (alvo);
 		}
 	}
@@ -32,5 +35,12 @@ public class TorreMetralhadora : Torre {
 			missil = ProjetilObject2.GetComponent<Missil> ();
 			missil.DefineAlvo (inimigo);
 		}
+	}
+	private void Mira()
+	{
+		var lookPos = alvo.transform.position - transform.position;
+		lookPos.y = 0;
+		var rotation = Quaternion.LookRotation(lookPos);
+		transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime*Velocidade);
 	}
 }
