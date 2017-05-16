@@ -21,8 +21,8 @@ public class TorreMetralhadora : Torre {
 		if (TempoAtual > MomentoDoUltimoDisparo + TempoDeRecarga) 
 		{
 			MomentoDoUltimoDisparo = TempoAtual;
-			GameObject PontoDeDisparo1 = this.transform.Find ("CanhoesDaTorre/MetralhaDir/PontoDeDisparoDir").gameObject;
-			GameObject PontoDeDisparo2 = this.transform.Find ("CanhoesDaTorre/MetralhaEsq/PontoDeDisparoEsq").gameObject;
+			GameObject PontoDeDisparo1 = this.transform.Find ("CorpoDaTorre/CanhoesDaTorre/MetralhaDir/PontoDeDisparoDir").gameObject;
+			GameObject PontoDeDisparo2 = this.transform.Find ("CorpoDaTorre/CanhoesDaTorre/MetralhaEsq/PontoDeDisparoEsq").gameObject;
 			Vector3 PosicaoDoPontoDeDisparo1 = PontoDeDisparo1.transform.position;
 			Vector3 PosicaoDoPontoDeDisparo2 = PontoDeDisparo2.transform.position;
 			GameObject ProjetilObject = (GameObject)Instantiate (projetilPrefab, PosicaoDoPontoDeDisparo1, Quaternion.identity);
@@ -33,6 +33,4 @@ public class TorreMetralhadora : Torre {
 			missil.DefineAlvo (inimigo);
 		}
 	}
-
-
 }

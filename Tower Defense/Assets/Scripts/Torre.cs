@@ -8,7 +8,7 @@ public class Torre : MonoBehaviour {
 	[SerializeField]protected float TempoDeRecarga = 1f;
 	protected float MomentoDoUltimoDisparo;
 	[SerializeField] protected float RaioDeAlcance;
-	[SerializeField] private GameObject canhao;
+	[SerializeField] protected GameObject canhao;
 	protected Inimigo alvo;
 	[SerializeField] protected float Custo;
 	void Update () {
@@ -56,7 +56,7 @@ public class Torre : MonoBehaviour {
 //arrumar bug de mudança de tamanho quando executa a mira
 	private void Mira()
 	{
-		canhao.transform.Rotate (0.0f,alvo.transform.position.y,0.0f);
+		canhao.transform.LookAt(alvo.transform.position);
 	}
 	public float GetCusto()
 	{
