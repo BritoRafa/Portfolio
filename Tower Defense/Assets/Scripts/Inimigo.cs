@@ -5,15 +5,9 @@ public class Inimigo : MonoBehaviour {
 	[SerializeField] private int Vida;
 
 	void Start () {
-		NavMeshAgent agente = GetComponent<NavMeshAgent> ();
-		GameObject FimDoCaminho = GameObject.Find ("FimDoCaminho");
-		agente.SetDestination (FimDoCaminho.transform.position);
+		MoveInimigo ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	//Controle da vida do inimigo
 	public void RecebeDano(int dano)
 	{
 		Vida -= dano;
@@ -22,4 +16,13 @@ public class Inimigo : MonoBehaviour {
 			Destroy (this.gameObject);
 		}
 	}
+	//
+	//Método responsável por mover o inimigo pelo caminho
+	private void MoveInimigo()
+	{
+		UnityEngine.AI.NavMeshAgent agente = GetComponent<UnityEngine.AI.NavMeshAgent> ();
+		GameObject FimDoCaminho = GameObject.Find ("FimDoCaminho");
+		agente.SetDestination (FimDoCaminho.transform.position);
+	}
+	//
 }
