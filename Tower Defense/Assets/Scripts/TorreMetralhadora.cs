@@ -4,12 +4,7 @@ using System.Collections;
 public class TorreMetralhadora : Torre {
 	[Range(0,4)]
 	[SerializeField]private float Velocidade = 3.0f;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
+	// Método Update é chamado uma vez a cada frame
 	void Update () {
 		alvo = EscolheAlvo();
 		if (alvo != null) 
@@ -18,6 +13,7 @@ public class TorreMetralhadora : Torre {
 			Atira (alvo);
 		}
 	}
+	//Método Responsável por fazer a Torre atirar
 	private void Atira(Inimigo inimigo)
 	{
 		float TempoAtual = Time.time;
@@ -36,6 +32,8 @@ public class TorreMetralhadora : Torre {
 			missil.DefineAlvo (inimigo);
 		}
 	}
+	//
+	//Método responsável por fazer a Torre girar em direção ao alvo
 	private void Mira()
 	{
 		var lookPos = alvo.transform.position - transform.position;
