@@ -7,10 +7,10 @@ public class GeradorDeInimigo : MonoBehaviour {
 	private float UltimoGerado;
 	private int n;
 
-	// Update is called once per frame
 	void Update () {
 		GeraInimigo ();
 	}
+	//Método responsavel por criar novos inimigos
 	private void GeraInimigo()
 	{
 		Vector3 PosicaoDeSpawn = this.transform.position;
@@ -22,4 +22,5 @@ public class GeradorDeInimigo : MonoBehaviour {
 			Instantiate (Inimigo[n], PosicaoDeSpawn, Quaternion.identity);
 		}
 	}
+	//
 }
