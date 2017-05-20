@@ -6,7 +6,7 @@ public class CriadorDeTorre : MonoBehaviour {
 	[SerializeField]private Jogador jogador;
 	[SerializeField]private Jogo jogo;
 	private int ID;
-	//cria torres no ponto clicado pelo mouse0
+	//cria torres no ponto clicado pelo mouse
 	public void ConstroiTorre()
 	{
 		jogo.GetComponent<Jogo> ();
@@ -29,4 +29,5 @@ public class CriadorDeTorre : MonoBehaviour {
 		Physics.Raycast (raio, out elementoAtingidoPeloRaio, comprimentoMaximoDoRaio);
 		return elementoAtingidoPeloRaio;
 	}
+	//
 }
