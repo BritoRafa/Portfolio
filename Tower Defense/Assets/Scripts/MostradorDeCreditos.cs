@@ -6,11 +6,13 @@ public class MostradorDeCreditos : MonoBehaviour {
 
 	private Text CampoTexto;
 	[SerializeField]private Jogador jogador;
+
+	//Captura o componente Text do objeto
 	void Start () {
 		CampoTexto = GetComponent<Text> ();
 	}
 	
-	// Update is called once per frame
+	//Define o texto do mostrador de créditos
 	void Update () {
 		CampoTexto.text = "Créditos: " + jogador.GetCredit();
 	}
