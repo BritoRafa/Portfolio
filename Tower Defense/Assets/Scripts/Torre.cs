@@ -11,6 +11,8 @@ public class Torre : MonoBehaviour {
 	[SerializeField] protected GameObject canhao;
 	protected Inimigo alvo;
 	[SerializeField] protected float Custo;
+
+	//Método Update é chamado uma vez a cada frame
 	void Update () {
 		alvo = EscolheAlvo();
 		if (alvo != null) 
@@ -19,7 +21,7 @@ public class Torre : MonoBehaviour {
 			Atira (alvo);
 		}
 	}
-	
+	//Método Responsável por fazer a Torre atirar
 	private void Atira(Inimigo inimigo)
 	{
 		float TempoAtual = Time.time;
@@ -34,6 +36,15 @@ public class Torre : MonoBehaviour {
 
 		}
 	}
+	//
+	//Método responsável por verificar se o objeto inimigo está dentro do raio de alcance da torre
+	protected bool EstaNoRaio(GameObject inimigo) 
+	{
+		float AreaDeAtaque = Vector3.Distance (Vector3.ProjectOnPlane(this.transform.position, Vector3.up), Vector3.ProjectOnPlane(inimigo.transform.position, Vector3.up));
+		return AreaDeAtaque <= RaioDeAlcance;
+	}
+	//
+	//Método responsável por definir qual o alvo da torre
 	protected Inimigo EscolheAlvo()
 	{
 		GameObject[] inimigos = GameObject.FindGameObjectsWithTag ("Inimigo");
@@ -46,14 +57,8 @@ public class Torre : MonoBehaviour {
 		}
 		return null;
 	}
-
-	protected bool EstaNoRaio(GameObject inimigo) 
-	{
-		float AreaDeAtaque = Vector3.Distance (Vector3.ProjectOnPlane(this.transform.position, Vector3.up), Vector3.ProjectOnPlane(inimigo.transform.position, Vector3.up));
-		return AreaDeAtaque <= RaioDeAlcance;
-	}
-		
-//arrumar bug de mudança de tamanho quando executa a mira
+	//		
+	//Método responsável por girar o canhão da torre em direção ao alvo
 	private void Mira()
 	{
 		canhao.transform.LookAt(alvo.transform.position);
@@ -62,4 +67,5 @@ public class Torre : MonoBehaviour {
 	{
 		return Custo;
 	}
+	//
 }
