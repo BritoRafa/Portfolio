@@ -37,21 +37,27 @@ public class Jogo : MonoBehaviour {
 		return Input.GetMouseButtonDown (0);
 	}
 	//
+	//Verifica se o jogador ainda está vivo
 	private bool JogoAcabou ()
 	{
 		return !jogador.EstaVivo ();
 	}
+	//
+	//Metódo responsável por reiniciar o jogo
 	public void reiniciarJogo ()
 	{
 		Application.LoadLevel (Application.loadedLevel);
 	}
+	//Método responsável por modificar o ID usado para criar uma nova torre
 	public void SetID(int id)
 	{
 		this.ID = id;
 	}
+	//
+	//Método responsável por retornar o ID usado para criar uma nova torre
 	public int GetID()
 	{
 		return ID;
 	}
-
+	//
 }
