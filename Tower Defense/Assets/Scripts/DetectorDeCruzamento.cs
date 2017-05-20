@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
 public class DetectorDeCruzamento : MonoBehaviour {
 	[SerializeField] private Jogador jogador;
-
+	//Detecta quando o inimigo chega ao objetivo e tira vida do jogador
 	void OnTriggerEnter (Collider collider)
 	{
 		if (collider.CompareTag ("Inimigo")) 
@@ -14,4 +13,5 @@ public class DetectorDeCruzamento : MonoBehaviour {
 			jogador.PerdeVida ();
 		}
 	}
+	//
 }
